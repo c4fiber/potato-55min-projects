@@ -1,0 +1,12 @@
+{
+  "owner": "c4fiber",
+  "defaultBranch": "main",
+  "projects": [
+    {
+      "name": "potato-multiview",
+      "description": "simple chzzk multi-view service",
+      "status": "active",
+      "tags": ["web", "chzzk"]
+    }
+  ]
+}
