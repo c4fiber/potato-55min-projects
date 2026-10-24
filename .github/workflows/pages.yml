@@ -1,8 +1,7 @@
-name: gateway-pages
+name: sitemap-pages
 on:
   push:
     branches: [main]
-    paths: [projects.json, site/**]
   workflow_dispatch:
 permissions:
   contents: read
@@ -14,7 +13,6 @@ jobs:
     environment: github-pages
     steps:
       - uses: actions/checkout@v4
-      - run: cp projects.json site/projects.json
+      - run: mkdir _site && cp index.html projects.json _site/
       - uses: actions/upload-pages-artifact@v3
-        with: { path: site }
       - uses: actions/deploy-pages@v4

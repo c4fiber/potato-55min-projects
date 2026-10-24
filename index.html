@@ -16,13 +16,14 @@
   .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px; }
   .card h2 { font-size:17px; margin:0 0 4px; } .card p { margin:0 0 10px; color:var(--muted); font-size:14px; }
   .links a { color:var(--accent); margin-right:10px; font-size:14px; text-decoration:none; }
+  .card h2 a.main { color:inherit; text-decoration:none; }
   .tag { display:inline-block; font-size:12px; border:1px solid var(--line); border-radius:99px; padding:0 8px; margin:0 4px 8px 0; color:var(--muted); }
 </style>
 </head>
 <body>
 <main>
   <h1>🥔 Potato Gateway</h1>
-  <p class="sub">potato series 프로젝트 단일 진입점</p>
+  <p class="sub">potato series sitemap</p>
   <input id="q" placeholder="검색 (이름, 설명, 태그)">
   <div class="grid" id="list"></div>
 </main>
@@ -33,9 +34,9 @@ fetch('projects.json').then(r => r.json()).then(reg => {
     document.getElementById('list').innerHTML = reg.projects
       .filter(p => (p.name + p.description + p.tags.join(' ')).toLowerCase().includes(q))
       .map(p => `<div class="card">
-        <h2>${p.name}</h2><p>${p.description || ''}</p>
+        <h2>${p.url ? `<a class="main" href="${p.url}">${p.name}</a>` : p.name}</h2><p>${p.description || ''}</p>
         ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-        <div class="links"><a href="${gh(p.name)}">repo</a><a href="${gh(p.name)}/pulls">PRs</a><a href="${gh(p.name)}/issues">issues</a>${p.url ? `<a href="${p.url}">live</a>` : ''}</div>
+        <div class="links">${p.url ? `<a href="${p.url}">열기 →</a>` : '<span class="tag">준비중</span>'}<a href="${gh(p.name)}">repo</a></div>
       </div>`).join('');
   };
   document.getElementById('q').oninput = e => render(e.target.value.toLowerCase());
