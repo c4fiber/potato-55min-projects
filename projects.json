@@ -3,9 +3,12 @@
   "projects": [
     {
       "name": "potato-multiview",
-      "description": "simple chzzk multi-view service",
-      "url": "",
-      "tags": ["web", "chzzk"]
+      "description": "치지직(CHZZK) 방송 여러 개를 한 화면에서 동시에 시청하는 멀티뷰 서비스",
+      "url": "https://multiview.ntdcoworks.com",
+      "tags": [
+        "web",
+        "chzzk"
+      ]
     }
   ]
 }
